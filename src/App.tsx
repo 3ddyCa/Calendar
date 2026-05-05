@@ -20,7 +20,7 @@ function App() {
   for(let i = 1; i<=31; i++){
     let d = i*31/7; 
     //console.log("variable de jour : ",d);
-    ROW.push(<Day jour={i} className="backgroundOrange" />);
+    ROW.push(<Day key={i} jour={i} className="backgroundOrange" />);
   }
   return <article
     className='card'
@@ -30,7 +30,7 @@ function App() {
         className='grid-7 letterRow'
         >
         {DAY_LETTER.map(dl=>
-          <Day jour={dl} className="dayLetter"/>
+          <Day key={DAY_LETTER.indexOf(dl)} jour={dl} className="dayLetter"/>
         )}
       </section>
       <section
