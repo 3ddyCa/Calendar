@@ -13,11 +13,15 @@ function Day({jour,className,onClick}){
 
 function App() {
   function handleCLick(ev){
+    const targetState = ev.target.classList.contains('selected');
     document.querySelectorAll(".selected").forEach(element=>{
       element.classList.remove('selected');
     })
     console.log("click");
-    ev.target.classList.toggle('selected');
+    if(!targetState){
+      ev.target.classList.add('selected');
+    }
+    
   }
 
 
