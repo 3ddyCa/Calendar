@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
 
-function Day({jour,className}){
+function Day({jour,className,onClick}){
   return <div
     className={className}
+    onClick={onClick}
   >
     {jour}
   </div>
@@ -11,6 +12,15 @@ function Day({jour,className}){
 
 
 function App() {
+  function handleCLick(ev){
+    document.querySelectorAll(".selected").forEach(element=>{
+      element.classList.remove('selected');
+    })
+    console.log("click");
+    ev.target.classList.toggle('selected');
+  }
+
+
   const MONTH = ['janvier','fevrier','mars','avril','mai','juin','juillet','août','septembre', 'octobre', 'novembre', 'decembre'];
   const DAY = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
   const DAY_LETTER = DAY.map((day)=>{
@@ -20,17 +30,21 @@ function App() {
   for(let i = 1; i<=31; i++){
     let d = i*31/7; 
     //console.log("variable de jour : ",d);
-    ROW.push(<Day key={i} jour={i} className="backgroundOrange" />);
+    ROW.push(<Day key={i} jour={i} onClick={(event)=>handleCLick(event)} className="backgroundOrange" />);
   }
+  let counter = 0;
+
   return <article
     className='card'
   >
-    <Day jour={MONTH[9]+" 2026"} className='month'/>
+    <Day key={"001"} jour={MONTH[9]+" 2026"} className='month'/>
       <section
         className='grid-7 letterRow'
         >
+        
         {DAY_LETTER.map(dl=>
-          <Day key={DAY_LETTER.indexOf(dl)} jour={dl} className="dayLetter"/>
+          <Day key={"letter_"+counter++} jour={dl} className="dayLetter"/>
+
         )}
       </section>
       <section

@@ -50,3 +50,8 @@
   height:5rem;
   padding:5px;
 }
+
+.selected{
+  background-color:orange;
+  border-radius:50%;
+}
