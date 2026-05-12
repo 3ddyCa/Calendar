@@ -1,29 +1,45 @@
-import { useState } from 'react'
+import { useState , useActionState } from 'react';
 import{Day} from './Day.tsx';
-import{FormCalendar} from "./FormCalendar.tsx"
-import './App.css'
+import{FormCalendar} from "./FormCalendar.tsx";
+import './App.css';
+
 
 
 
 
 function App() {
 
+  const DATE = Array.from(document.querySelectorAll('.days div'));
+  let selected=0;
   function handleCLick(ev:any){
     const targetState = ev.target.classList.contains('selected');
-    document.querySelectorAll(".selected").forEach(element=>{
+    const selecteds = Array.from(document.querySelectorAll(".selected"));
+    selecteds.forEach(element=>{
       element.classList.remove('selected');
     })
-    console.log("click");
+    
     if(!targetState){
       ev.target.classList.add('selected');
+      selected = ev.target.innerText;
     }
-    
+    console.log("click > ",selected);
   }
 
   function handleSubmit(ev:any){
       ev.preventDefault();  
       console.log("Event soumis : ",ev.target.querySelector('h2').value," ")
-      console.log("Champs du formulaire : ",ev.target.Cal_name.value," ",ev.target.Cal_hour.value," ",ev.target.Cal_place.value)
+      
+      const formFields = [ev.target.name.value,ev.target.hour.value,ev.target.place.value];
+      const result = {name:ev.target.name.value ,hour:ev.target.hour.value , place:ev.target.place.value , index:ev.target.index.value , confirmed:true};
+      console.log("Champs du formulaire : ",result);
+      formFields.forEach(value=>{
+        if(value == undefined || value == ""){
+           alert("Champ vide detecté ! ");
+           return result;
+        }
+
+      })
+      return 
   }
 
 
@@ -43,7 +59,7 @@ function App() {
   return <article
     className='card'
   >
-  <FormCalendar onSubmit={handleSubmit}/>
+  <FormCalendar onSubmit={handleSubmit} index={selected}/>
    <div> 
     <Day key={"001"} jour={MONTH[9]+" 2026"} className='month'/>
       <section
