@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import{Day} from './Day.tsx';
+import{FormCalendar} from "./FormCalendar.tsx"
 import './App.css'
 
 
 
 
 function App() {
-  const [weekDay, setWeekDay] = useState(DAY[0]);
+
   function handleCLick(ev){
     const targetState = ev.target.classList.contains('selected');
     document.querySelectorAll(".selected").forEach(element=>{
@@ -36,6 +37,8 @@ function App() {
   return <article
     className='card'
   >
+  <FormCalendar/>
+   <div> 
     <Day key={"001"} jour={MONTH[9]+" 2026"} className='month'/>
       <section
         className='grid-7 letterRow'
@@ -51,6 +54,8 @@ function App() {
         >
           {ROW}
       </section>
+    
+    </div>
   </article>
   
 }

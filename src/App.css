@@ -1,3 +1,8 @@
+.card{
+  display:flex;
+  flex-direction: row;
+}
+
 .backgroundOrange{
   border-radius:5px;
   padding:5px;
@@ -54,4 +59,18 @@
 .selected{
   background-color:orange;
   border-radius:50%;
+}
+
+.addCalendar{
+  padding:1em;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background-color: tomato ;
+  gap:5px;
+  h2{
+    color:darkgrey;
+    font-weight:800;
+    
+  }
 }
