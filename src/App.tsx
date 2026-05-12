@@ -1,17 +1,12 @@
 import { useState } from 'react'
+import{Day} from './Day.tsx';
 import './App.css'
 
-function Day({jour,className,onClick}){
-  return <div
-    className={className}
-    onClick={onClick}
-  >
-    {jour}
-  </div>
-}
+
 
 
 function App() {
+  const [weekDay, setWeekDay] = useState(DAY[0]);
   function handleCLick(ev){
     const targetState = ev.target.classList.contains('selected');
     document.querySelectorAll(".selected").forEach(element=>{
