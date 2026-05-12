@@ -20,6 +20,12 @@ function App() {
     
   }
 
+  function handleSubmit(ev){
+      ev.preventDefault();  
+      console.log("Event soumis : ",ev.target," ")
+      console.log("Champs du formulaire : ",ev.target.Cal_name.value," ",ev.target.Cal_hour.value," ",ev.target.Cal_place.value)
+  }
+
 
   const MONTH = ['janvier','fevrier','mars','avril','mai','juin','juillet','août','septembre', 'octobre', 'novembre', 'decembre'];
   const DAY = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
@@ -37,7 +43,7 @@ function App() {
   return <article
     className='card'
   >
-  <FormCalendar/>
+  <FormCalendar onSubmit={handleSubmit}/>
    <div> 
     <Day key={"001"} jour={MONTH[9]+" 2026"} className='month'/>
       <section

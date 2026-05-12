@@ -1,12 +1,8 @@
 import {useState} from 'react'
 const LOGS = true;
-export function FormCalendar(){
+export function FormCalendar(onSubmit){
 
-    function handleSubmit(ev){
-        ev.preventDefault();  
-        console.log("Event soumis : ",ev.target," ")
-        console.log("Champs du formulaire : ",ev.target.Cal_name.value," ",ev.target.Cal_hour.value," ",ev.target.Cal_place.value)
-    }
+    
 
     return <form className="addCalendar" onSubmit={(event:any)=>handleSubmit(event)}>
             <h2>Nouvel Evènement</h2>
