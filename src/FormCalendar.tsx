@@ -1,10 +1,10 @@
 import {useState} from 'react'
 const LOGS = true;
-export function FormCalendar(onSubmit){
+export function FormCalendar({onSubmit}){
 
     
 
-    return <form className="addCalendar" onSubmit={(event:any)=>handleSubmit(event)}>
+    return <form className="addCalendar" onSubmit={(event:any)=>onSubmit(event)}>
             <h2>Nouvel Evènement</h2>
             <label htmlFor='CalendarName'>Nom de l'évènement</label>
             <input id='CalendarName' name='Cal_name' type="text" onChange={(event)=>{if(LOGS){console.log(event.target.name," ",event.target.value)}}}></input>

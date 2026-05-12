@@ -8,7 +8,7 @@ import './App.css'
 
 function App() {
 
-  function handleCLick(ev){
+  function handleCLick(ev:any){
     const targetState = ev.target.classList.contains('selected');
     document.querySelectorAll(".selected").forEach(element=>{
       element.classList.remove('selected');
@@ -20,9 +20,9 @@ function App() {
     
   }
 
-  function handleSubmit(ev){
+  function handleSubmit(ev:any){
       ev.preventDefault();  
-      console.log("Event soumis : ",ev.target," ")
+      console.log("Event soumis : ",ev.target.querySelector('h2').value," ")
       console.log("Champs du formulaire : ",ev.target.Cal_name.value," ",ev.target.Cal_hour.value," ",ev.target.Cal_place.value)
   }
 
@@ -36,7 +36,7 @@ function App() {
   for(let i = 1; i<=31; i++){
     let d = i*31/7; 
     //console.log("variable de jour : ",d);
-    ROW.push(<Day key={i} jour={i} onClick={(event)=>handleCLick(event)} className="backgroundOrange" />);
+    ROW.push(<Day key={i} jour={i} onClick={(event:any)=>handleCLick(event)} className="backgroundOrange" />);
   }
   let counter = 0;
 
